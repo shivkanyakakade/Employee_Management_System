@@ -1,0 +1,34 @@
+# Employee Management System
+
+A Full Stack Employee Management System built using Angular, Node.js, Express and MongoDB.
+
+## Features
+
+- JWT Authentication
+- Role Based Authorization
+- Dashboard
+- Employee CRUD
+- Search
+- Pagination
+- Reset Password
+- Admin Panel
+- Responsive UI
+
+## Tech Stack
+
+Frontend
+- Angular 20
+- Angular Material
+
+Backend
+- Node.js
+- Express.js
+- MongoDB
+- JWT
+- bcrypt
+
+## Project Structure
+
+EmployeeManagementSystem
+├── employee-frontend
+└── employee-backend
