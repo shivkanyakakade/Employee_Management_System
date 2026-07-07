@@ -32,3 +32,35 @@ Backend
 EmployeeManagementSystem
 ├── employee-frontend
 └── employee-backend
+
+
+
+# Screenshots
+
+## Login
+
+![Login](screenshots/login.png)
+
+---
+
+## Dashboard
+
+![Dashboard](screenshots/dashboard.png)
+
+---
+
+## Employee List
+
+![Employee List](screenshots/employee-list.png)
+
+---
+
+## Add Employee
+
+![Add Employee](screenshots/add-employee.png)
+
+---
+
+## Reset Password
+
+![Reset Password](screenshots/reset-password.png)
