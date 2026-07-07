@@ -1,0 +1,89 @@
+    <div class="dashboard-container">
+
+        
+        <div class="dashboard-header">
+            <!-- <p>
+                Employee Management Dashboard
+            </p> -->
+            <div>
+                <h1>
+                    Welcome, {{ username }} 👋
+                </h1>
+
+                <p>
+                    Employee Management Dashboard
+                </p>
+            </div>
+
+            <div class="date-section">
+                <mat-icon>calendar_today</mat-icon>
+                {{ today | date:'fullDate' }}
+            </div>
+
+        </div>
+        <div class="dashboard">
+
+            <mat-card class="card employee-card">
+
+                <mat-card-content>
+
+                    <mat-icon class="card-icon">
+                        groups
+                    </mat-icon>
+
+                    <h1>{{ totalemployees }}</h1>
+
+                    <p>Total Employees</p>
+
+                </mat-card-content>
+
+            </mat-card>
+
+
+            <mat-card class="card department-card">
+
+                <mat-card-content>
+
+                    <mat-icon class="card-icon">
+                        apartment
+                    </mat-icon>
+
+                    <h1>{{ totaldept }}</h1>
+
+                    <p>Departments</p>
+
+                </mat-card-content>
+
+            </mat-card>
+
+        </div>
+
+        <div class="department-section">
+
+            <h2>Department Overview</h2>
+
+            <div class="department-grid">
+
+                <mat-card class="department-card detailed-card" *ngFor="let dept of departmentcounts">
+
+                    <mat-card-content>
+                        <mat-icon class="dept-icon">
+                            {{ getDepartmentIcon(dept.name) }}
+                        </mat-icon>
+
+                        <h3>{{ dept.name }}</h3>
+
+                        <h1>{{ dept.count }}</h1>
+
+                        <p>Employees</p>
+
+                    </mat-card-content>
+
+                </mat-card>
+
+            </div>
+
+        </div>
+
+
+    </div>

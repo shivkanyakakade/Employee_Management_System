@@ -1,0 +1,196 @@
+<mat-card>
+
+  <mat-card-header>
+    <mat-card-title>
+      {{ editMode ? 'Update Employee' : 'Add Employee' }}
+    </mat-card-title>
+  </mat-card-header>
+  <br>
+  <mat-card-content>
+
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+      <!-- Name -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name">
+
+        @if(employeeForm.get('name')?.touched &&
+        employeeForm.get('name')?.invalid){
+        <mat-error>Name is required</mat-error>
+        }
+
+      </mat-form-field>
+
+      <br><br>
+
+      <!-- Email -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" formControlName="email">
+
+        @if(employeeForm.get('email')?.touched &&
+        employeeForm.get('email')?.errors?.['required']){
+        <mat-error>Email is required</mat-error>
+        }
+
+        @if(employeeForm.get('email')?.touched &&
+        employeeForm.get('email')?.errors?.['email']){
+        <mat-error>Enter valid email</mat-error>
+        }
+
+      </mat-form-field>
+
+      <br><br>
+
+      <!-- Mobile -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Mobile</mat-label>
+        <input matInput formControlName="mobile">
+
+        @if(employeeForm.get('mobile')?.touched &&
+        employeeForm.get('mobile')?.errors?.['required']){
+        <mat-error>Mobile is required</mat-error>
+        }
+
+        @if(employeeForm.get('mobile')?.touched &&
+        employeeForm.get('mobile')?.errors?.['pattern']){
+        <mat-error>Mobile must contain 10 digits</mat-error>
+        }
+
+      </mat-form-field>
+
+      <br><br>
+
+      <!-- Department -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Department</mat-label>
+        <input matInput formControlName="department">
+
+        @if(employeeForm.get('department')?.touched &&
+        employeeForm.get('department')?.invalid){
+        <mat-error>Department is required</mat-error>
+        }
+
+      </mat-form-field>
+
+      <mat-form-field *ngIf="!editMode" appearance="outline" class="full-width">
+
+        <mat-label>Role</mat-label>
+
+        <mat-select formControlName="role">
+
+          <mat-option value="employee">
+            Employee
+          </mat-option>
+
+          <mat-option value="admin">
+            Admin
+          </mat-option>
+
+        </mat-select>
+
+      </mat-form-field>
+
+      <mat-form-field *ngIf="!editMode" appearance="outline" class="full-width">
+
+        <mat-label>Temporary Password</mat-label>
+
+        <input matInput type="password" formControlName="password">
+
+      </mat-form-field>
+
+      <br>
+
+
+      <button mat-raised-button type="submit" [disabled]="employeeForm.invalid">
+
+        {{ editMode ? 'Update Employee' : 'Add Employee' }}
+
+      </button>
+
+    </form>
+
+  </mat-card-content>
+
+</mat-card>
+
+
+
+
+
+
+
+
+
+
+<!-- <h2>Add Employee</h2>
+
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <label>Name</label>
+    <input type="text" formControlName="name">
+
+    @if(employeeForm.get('name')?.touched &&
+    employeeForm.get('name')?.invalid){
+    <p>Name is required</p>
+    }
+  </div>
+
+  <br>
+
+  <div>
+    <label>Email</label>
+    <input type="email" formControlName="email">
+
+    @if(employeeForm.get('email')?.touched &&
+    employeeForm.get('email')?.errors?.['required']){
+    <p>Email is required</p>
+    }
+
+    @if(employeeForm.get('email')?.touched &&
+    employeeForm.get('email')?.errors?.['email']){
+    <p>Enter valid email</p>
+    }
+  </div>
+
+  <br>
+
+  <div>
+    <label>Mobile</label>
+    <input type="text" formControlName="mobile">
+
+    @if(employeeForm.get('mobile')?.touched &&
+    employeeForm.get('mobile')?.errors?.['required']){
+    <p>Mobile is required</p>
+    }
+
+    @if(employeeForm.get('mobile')?.touched &&
+    employeeForm.get('mobile')?.errors?.['pattern']){
+    <p>Mobile must contain 10 digits</p>
+    }
+  </div>
+
+  <br>
+
+  <div>
+    <label>Department</label>
+    <input type="text" formControlName="department">
+
+    @if(employeeForm.get('department')?.touched &&
+    employeeForm.get('department')?.invalid){
+    <p>Department is required</p>
+    }
+  </div>
+
+  <br>
+
+  <button type="submit" [disabled]="employeeForm.invalid">
+    {{ editMode
+    ? 'Update Employee'
+    : 'Add Employee'
+    }}
+  </button>
+
+</form> -->
