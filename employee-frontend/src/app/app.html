@@ -1,0 +1,167 @@
+<!-- <div class="container-fluid app-container"> -->
+<mat-toolbar *ngIf="isLoggedIn()" class="toolbar">
+
+  <div class="logo-section">
+
+    <mat-icon class="logo-icon">
+      groups
+    </mat-icon>
+
+    <span class="logo-text">
+      Employee Management System
+    </span>
+
+  </div>
+
+  <div class="nav-links">
+
+    <button mat-button routerLink="/dashboard">
+      <mat-icon>dashboard</mat-icon>
+      Dashboard
+    </button>
+
+    <button mat-button routerLink="/employees">
+      <mat-icon>group</mat-icon>
+      Employee List
+    </button>
+
+    <button *ngIf="authservice.isAdmin()" mat-button routerLink="/add-employee">
+      <mat-icon>person_add</mat-icon>
+      Add Employee
+    </button>
+
+  </div>
+
+  <div class="right-section">
+
+    <div class="profile-btn" [matMenuTriggerFor]="profileMenu">
+
+      <mat-icon class="profile-icon">
+        account_circle
+      </mat-icon>
+
+      <div class="profile-info">
+
+        <span class="profile-name">
+          {{ getUsername() }}
+        </span>
+
+        <span class="profile-role">
+          {{ getRole() | titlecase }}
+        </span>
+
+      </div>
+
+      <mat-icon class="dropdown-icon">
+        keyboard_arrow_down
+      </mat-icon>
+
+    </div>
+
+    <mat-menu #profileMenu="matMenu">
+
+      <button mat-menu-item routerLink="/reset-password">
+        <mat-icon>lock_reset</mat-icon>
+        <span>Reset Password</span>
+      </button>
+
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+
+    </mat-menu>
+
+  </div>
+
+
+
+
+  <!-- <div class="user-badge">
+      <mat-icon>account_circle</mat-icon>
+      {{ getUsername() }}
+    </div>
+
+    <button mat-button routerLink="/reset-password" class="reset-btn">
+      <mat-icon>lock_reset</mat-icon>
+      Reset Password
+    </button>
+
+    <button mat-raised-button color="warn" (click)="logout()">
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button> -->
+
+</mat-toolbar>
+
+
+
+<div class="container">
+
+  <!-- <app-loading-spinner></app-loading-spinner> -->
+  <router-outlet></router-outlet>
+
+</div>
+
+
+
+
+
+<!-- </div> -->
+<!-- <mat-toolbar *ngIf="isLoggedIn()" class="toolbar">
+  <div class="toolbar-content">
+     <div class="logo">Employee Management System</div>
+    <div class="welcome">
+      Welcome {{ username }} !!!
+    </div> 
+
+    <button mat-button routerLink="/dashboard">
+      Dashboard
+    </button>
+    <div class="nav-links">
+
+      <button mat-button routerLink="/employees">
+
+        Employee List
+
+      </button>
+
+      <button mat-button routerLink="/add-employee">
+
+        Add Employee
+
+      </button>
+
+      <button mat-raised-button color="warn" (click)="logout()">
+
+        Logout
+
+      </button>
+
+    </div>
+  </div>
+</mat-toolbar> -->
+
+
+
+
+<!-- <div>
+  <h1>Employee Management System</h1>
+  <nav>
+
+    <a routerLink="/employees">
+      Employee List
+    </a>
+
+    |
+
+    <a routerLink="/add-employee">
+      Add Employee
+    </a>
+
+  </nav>
+
+  <hr>
+
+  <router-outlet></router-outlet>
+</div> -->

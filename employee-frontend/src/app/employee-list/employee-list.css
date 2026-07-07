@@ -1,0 +1,39 @@
+/* mat-card {
+    margin: 20px;
+    padding: 20px;
+} */
+mat-card {
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+mat-form-field {
+    width: 100%;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    min-width: 800px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
