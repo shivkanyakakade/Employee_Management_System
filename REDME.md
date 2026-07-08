@@ -103,20 +103,18 @@ server/
 ## Screenshots
 
 ### Login Page
-
-(Add Screenshot)
-
-### Dashboard
-
-(Add Screenshot)
-
+### Admin_Dashboard
+### Employee_Dashboard
 ### Employee List
-
-(Add Screenshot)
-
 ### Add Employee
-
-(Add Screenshot)
+### Edit Employee
+### Delete Employee
+### Search employee
+### Password Reset
+### REsponsiveness 
+        -Desktop
+        -Tablet
+        -Mobile
 
 ---
 
