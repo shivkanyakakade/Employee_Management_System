@@ -1,66 +1,179 @@
 # Employee Management System
 
-A Full Stack Employee Management System built using Angular, Node.js, Express and MongoDB.
+A full-stack Employee Management System built using Angular, Node.js, Express.js, and MongoDB Atlas. 
+This application allows administrators to manage employee records securely with JWT authentication and role-based authorization.
 
-## Features
+## Project Overview
 
-- JWT Authentication
-- Role Based Authorization
-- Dashboard
-- Employee CRUD
-- Search
-- Pagination
-- Reset Password
-- Admin Panel
-- Responsive UI
+The Employee Management System is a secure web application that enables organizations to manage employee information efficiently. It includes authentication, authorization, CRUD operations, search functionality, reset password and responsive UI with Angular.
+
+---
 
 ## Tech Stack
 
-Frontend
+### Frontend
 - Angular 20
+- TypeScript
 - Angular Material
+- HTML5
+- CSS3
+- Bootstrap
+- RxJS
 
-Backend
+### Backend
 - Node.js
 - Express.js
-- MongoDB
-- JWT
-- bcrypt
 
-## Project Structure
+### Database
+- MongoDB Atlas
 
-EmployeeManagementSystem
-├── employee-frontend
-└── employee-backend
+### Authentication
+- JWT (JSON Web Token)
 
-
-
-# Screenshots
-
-## Login
-
-![Login](screenshots/login.png)
+### Tools
+- Git
+- GitHub
+- VS Code
+- Postman
 
 ---
 
-## Dashboard
+## Features
 
-![Dashboard](screenshots/dashboard.png)
+### Authentication
+- User Login
+- JWT Authentication
+- Logout
+- Password Reset
+
+### Authorization
+- Role-Based Authorization
+- Protected Routes
+- Route Guards
+
+### Employee Management
+- Add Employee
+- Update Employee
+- Delete Employee
+- View Employee Details
+- Search Employees
+- Pagination
+- Sorting
+
+### UI Features
+- Responsive Design
+- Loading Spinner
+- Form Validation
+- Error Handling
+- HTTP Interceptor
+- Error Interceptor
 
 ---
 
-## Employee List
+## Folder Structure
 
-![Employee List](screenshots/employee-list.png)
+Frontend
+
+src/
+│
+├── app/
+│   ├── components/
+│   ├── services/
+│   ├── models/
+│   ├── guards/
+│   ├── interceptors/
+│   ├── shared/
+│   └── authentication/
+
+Backend
+
+server/
+│
+├── controllers/
+├── routes/
+├── middleware/
+├── models/
+├── config/
+└── server.js
 
 ---
 
-## Add Employee
 
-![Add Employee](screenshots/add-employee.png)
+
+## Screenshots
+
+### Login Page
+
+(Add Screenshot)
+
+### Dashboard
+
+(Add Screenshot)
+
+### Employee List
+
+(Add Screenshot)
+
+### Add Employee
+
+(Add Screenshot)
 
 ---
 
-## Reset Password
 
-![Reset Password](screenshots/reset-password.png)
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| POST | /login | User Login |
+| POST | /register | User Registration |
+| GET | /employees | Get Employees |
+| POST | /employees | Add Employee |
+| PUT | /employees/:id | Update Employee |
+| DELETE | /employees/:id | Delete Employee |
+
+---
+
+
+## Future Enhancements
+
+- Employee Profile Image Upload
+- Export Employees to Excel
+- Email Notifications
+- Dashboard Charts
+- Attendance Management
+- Dark Mode
+
+---
+
+## Learning Outcomes
+
+During this project I gained hands-on experience with:
+
+- Angular Standalone Components
+- Angular Services
+- Reactive Forms
+- Angular Routing
+- Dependency Injection
+- RxJS
+- HTTP Client
+- JWT Authentication
+- Route Guards
+- HTTP Interceptors
+- Error Handling
+- REST API Integration
+- Express.js
+- MongoDB Atlas
+
+---
+
+## Author
+
+Shivkanya Kakade
+
+LinkedIn:
+GitHub:
+
+
+
