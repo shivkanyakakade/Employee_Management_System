@@ -18,14 +18,12 @@ const connectDB = async () => {
 
         //here used %40 ASCII value of @ in password Employee@1234
         await mongoose.connect(
-            // process.env.MONGO_URI
+            process.env.MONGO_URI
 
-            'mongodb+srv://REDACTED:REDACTED@cluster0.i1x6r1g.mongodb.net/employeedb?retryWrites=true&w=majority&appName=Cluster0'
+            // 'mongodb+srv://REDACTED:REDACTED@cluster0.i1x6r1g.mongodb.net/employeedb?retryWrites=true&w=majority&appName=Cluster0'
         );
 
-        console.log(
-            'MongoDB Connected Successfully'
-        );
+        console.log('MongoDB Connected Successfully');
 
     } catch (error) {
 
