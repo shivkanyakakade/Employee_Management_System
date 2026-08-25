@@ -20,7 +20,6 @@ const connectDB = async () => {
         await mongoose.connect(
             process.env.MONGO_URI
 
-            // 'mongodb+srv://REDACTED:REDACTED@cluster0.i1x6r1g.mongodb.net/employeedb?retryWrites=true&w=majority&appName=Cluster0'
         );
 
         console.log('MongoDB Connected Successfully');
