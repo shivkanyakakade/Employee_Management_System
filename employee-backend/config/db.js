@@ -16,7 +16,6 @@ const connectDB = async () => {
         // console.log('Before MONGO connect');
         // console.log(process.env.MONGO_URI);
 
-        //here used %40 ASCII value of @ in password Employee@1234
         await mongoose.connect(
             process.env.MONGO_URI
 
