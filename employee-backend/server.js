@@ -15,7 +15,8 @@ connectDB();
 // app.use(cors());
 app.use(cors({
     origin: [
-        'http://localhost:4200'
+        'http://localhost:4200',
+        'https://employee-management-eta-teal.vercel.app/'
     ]
 }));
 
