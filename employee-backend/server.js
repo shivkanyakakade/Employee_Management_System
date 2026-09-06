@@ -16,7 +16,7 @@ connectDB();
 const corsOptions = {
     origin: [
         'http://localhost:4200',
-        'https://employee-management-eta-teal.vercel.app/'
+        'https://employee-management-eta-teal.vercel.app'
     ],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
