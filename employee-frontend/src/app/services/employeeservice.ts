@@ -14,7 +14,10 @@ export class Employeeservice {
     // private apiurl = 'http://localhost:3000/employees';
 
     //Node.js + MongoDB HTTP
-    private apiurl = 'http://localhost:5000/employees';
+    // private apiurl = 'http://localhost:5000/employees';
+    private apiurl = 'https://employee-management-backend-m7dx.onrender.com/employees';
+
+
 
     // -------------------------
     //Array declaration

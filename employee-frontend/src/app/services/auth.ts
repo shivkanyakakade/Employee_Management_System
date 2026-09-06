@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 
 export class Auth {
 
-    private apiURL = 'http://localhost:5000/api/auth';
+    private apiURL = 'https://employee-management-backend-m7dx.onrender.com/api/auth';
 
     constructor(private http: HttpClient) {
 
@@ -26,7 +26,7 @@ export class Auth {
 
     }
 
-    resetPassword(data: {currentPassword: string; newPassword: string;}) {
+    resetPassword(data: { currentPassword: string; newPassword: string; }) {
         return this.http.post(`${this.apiURL}/reset-password`, data);
     }
 
