@@ -144,8 +144,10 @@ router.post('/login', async (req, res) => {
         const { email, password } = req.body;
 
         // console.log(req.body);
+        console.log("LOGIN EMAIL: ", email);
 
         const user = await User.findOne({ email });
+        console.log("USER FOUND: ", !!user);
 
         if (!user) {
             return res.status(400).json({
@@ -160,6 +162,8 @@ router.post('/login', async (req, res) => {
                 password,
                 user.password
             );
+        console.log("PASSWORD MATCH: ", isMatch);
+
         if (!isMatch) {
 
             return res.status(400).json({
