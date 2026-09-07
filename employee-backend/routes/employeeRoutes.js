@@ -54,43 +54,67 @@ router.post('/', verifyToken, isAdmin, async (req, res) => {
             role
         } = req.body;
 
+        //validate role
+        // if (!['admin', 'employee'].includes(role)) {
+        //     return res.status(400).json({
+        //         message: 'Invalid role'
+        //     });
+        // }
+
         // Check if user already exists
         const existingUser = await User.findOne({ email });
 
         if (existingUser) {
-
             return res.status(400).json({
                 message: "User already exists"
+            });
+        }
+
+        // Hash Password
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        //Admin role
+        if (role === 'admin') {
+
+            const admin = new User({
+                username: name,
+                email,
+                password: hashedPassword,
+                role: 'admin'
+            });
+
+            const savedAdmin = await admin.save();
+
+            return res.status(201).json({
+                message: 'Admin Created Successfully',
+                user: {
+                    username: savedAdmin.username,
+                    email: savedAdmin.email,
+                    role: savedAdmin.role
+                }
             });
 
         }
 
+        //employee role
+
         // Create Employee
         const employee = new Employee({
-
             name,
             email,
             department,
             mobile,
             role
-
         });
-
         const savedEmployee = await employee.save();
-
-        // Hash Password
-        const hashedPassword = await bcrypt.hash(password, 10);
 
         // Create User
         const user = new User({
-
             username: name,
             email,
             password: hashedPassword,
             role
-
             // role: "employee"
-
         });
 
         await user.save();
