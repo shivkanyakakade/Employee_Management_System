@@ -27,6 +27,16 @@ The Employee Management System is a secure web application that enables organiza
 ### Database
 - MongoDB Atlas
 
+### Deployment
+- Vercel
+- Render
+
+## Live Demo
+https://employee-management-eta-teal.vercel.app/
+
+## Source Code
+https://github.com/shivkanyakakade/Employee_Management_System.git
+
 ### Authentication
 - JWT (JSON Web Token)
 
@@ -70,36 +80,6 @@ The Employee Management System is a secure web application that enables organiza
 
 ---
 
-## Folder Structure
-
-Frontend
-
-src/
-│
-├── app/
-│   ├── components/
-│   ├── services/
-│   ├── models/
-│   ├── guards/
-│   ├── interceptors/
-│   ├── shared/
-│   └── authentication/
-
-Backend
-
-server/
-│
-├── controllers/
-├── routes/
-├── middleware/
-├── models/
-├── config/
-└── server.js
-
----
-
-
-
 ## Screenshots
 
 ### Login Page
@@ -119,17 +99,16 @@ server/
 ---
 
 
-
 ## API Endpoints
 
-| Method | Endpoint | Description |
-|---------|----------|-------------|
-| POST | /login | User Login |
-| POST | /register | User Registration |
-| GET | /employees | Get Employees |
-| POST | /employees | Add Employee |
-| PUT | /employees/:id | Update Employee |
-| DELETE | /employees/:id | Delete Employee |
+| Method | Endpoint       | Description       |
+|--------|----------------|-------------------|
+| POST   | /login         | User Login        |
+| POST   | /register      | User Registration |
+| GET    | /employees     | Get Employees     |
+| POST   | /employees     | Add Employee      |
+| PUT    | /employees/:id | Update Employee   |
+| DELETE | /employees/:id | Delete Employee   |
 
 ---
 
