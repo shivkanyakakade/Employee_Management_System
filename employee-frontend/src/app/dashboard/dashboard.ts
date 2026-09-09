@@ -4,6 +4,8 @@ import { MatCardModule } from '@angular/material/card';
 import { ChangeDetectorRef } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 // import { Auth } from '../services/auth';
 // import { Router } from '@angular/router';
@@ -12,10 +14,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [MatCardModule, MatIconModule, CommonModule],
+  imports: [RouterLink, MatCardModule, MatIconModule, CommonModule],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css',
 })
+
 export class Dashboard implements OnInit {
 
   today = new Date();
@@ -28,7 +31,7 @@ export class Dashboard implements OnInit {
 
   employess: any[] = [];
 
-  constructor( private empserv: Employeeservice, private cd: ChangeDetectorRef) { }
+  constructor(private empserv: Employeeservice, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
 
