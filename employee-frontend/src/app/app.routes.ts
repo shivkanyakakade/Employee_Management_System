@@ -9,6 +9,7 @@ import { authGuard } from './guards/auth-guard';
 import { guestGuard } from './guards/guest-guard';
 import { roleGuard } from './guards/role-guard';
 import { ResetPassword } from './reset-password/reset-password';
+import { Departments } from './departments/departments';
 
 export const routes: Routes = [
 
@@ -44,9 +45,15 @@ export const routes: Routes = [
     },
 
     {
+        path: 'departments',
+        component: Departments,
+        canActivate: [authGuard]
+    },
+
+    {
         path: 'add-employee',
         component: EmployeeForm,
-        canActivate: [authGuard ,roleGuard]
+        canActivate: [authGuard, roleGuard]
     },
 
     {
@@ -54,11 +61,11 @@ export const routes: Routes = [
         component: EmployeeForm,
         canActivate: [authGuard]
     },
-    
+
     {
         path: 'reset-password',
         component: ResetPassword,
-        canActivate : [authGuard]
+        canActivate: [authGuard]
     },
 
     {

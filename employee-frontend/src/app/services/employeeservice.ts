@@ -1,4 +1,4 @@
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 import { Employeemodal } from '../models/employee.model';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -90,6 +90,15 @@ export class Employeeservice {
 
     }
 
+    getDepartments(): Observable<string[]> {
+
+        return this.getEmployees().pipe(
+            map(employees =>
+                [...new Set(employees.map(emp => emp.department))]
+            )
+        );
+
+    }
 
     addEmployee(employee: any) {
 

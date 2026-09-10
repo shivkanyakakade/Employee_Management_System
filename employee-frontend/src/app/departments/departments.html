@@ -1,0 +1,20 @@
+<!-- <h2>Departments</h2> -->
+<!-- <h3>Total Departments : {{departments.length}} </h3> -->
+
+<!-- <p>{{departments | json }}</p> -->
+
+<div class="department-grid">
+
+    <mat-card class="card department-card" *ngFor="let d of departments">
+
+        <mat-card-content>
+
+            <mat-icon class="card-icon">apartment</mat-icon>
+
+            <h3>{{ d }}</h3>
+
+        </mat-card-content>
+
+    </mat-card>
+
+</div>

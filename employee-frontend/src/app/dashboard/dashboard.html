@@ -2,9 +2,6 @@
 
 
     <div class="dashboard-header">
-        <!-- <p>
-                Employee Management Dashboard
-            </p> -->
         <div>
             <h1>
                 Welcome, {{ username }} 👋
@@ -45,7 +42,7 @@
         </mat-card>
 
 
-        <mat-card class="card department-card">
+        <mat-card class="card department-card" routerLink="/departments">
 
             <mat-card-content>
 
@@ -56,6 +53,11 @@
                 <h1>{{ totaldept }}</h1>
 
                 <p>Departments</p>
+
+                <span class="view-link">
+                    View Departments
+                    <mat-icon>arrow_forward</mat-icon>
+                </span>
 
             </mat-card-content>
 
