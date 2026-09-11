@@ -100,6 +100,14 @@ export class Employeeservice {
 
     }
 
+    getEmployeesByDepartment(department: string): Observable<Employeemodal[]> {
+
+        return this.http.get<Employeemodal[]>(
+            `${this.apiurl}?department=${encodeURIComponent(department)}`
+        );
+
+    }
+
     addEmployee(employee: any) {
 
         // -------------------------

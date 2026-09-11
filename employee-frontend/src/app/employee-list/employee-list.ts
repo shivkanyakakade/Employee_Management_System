@@ -19,6 +19,7 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ViewChild } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ActivatedRoute } from '@angular/router';
 import { delay } from 'rxjs';
 
 
@@ -48,9 +49,10 @@ export class EmployeeList {
   @ViewChild(MatPaginator) paginator !: MatPaginator;         //pagination
   @ViewChild(MatSort) sort !: MatSort;                        //Sorting Table data according to Headers
 
-  constructor(public authservice: Auth, private employeeService: Employeeservice, private cdr: ChangeDetectorRef, private router: Router, private snackbar: MatSnackBar, private dialog: MatDialog) {
+  constructor(private aroute: ActivatedRoute, public authservice: Auth, private employeeService: Employeeservice, private cdr: ChangeDetectorRef, private router: Router, private snackbar: MatSnackBar, private dialog: MatDialog) {
     // this.employees = this.employeeService.getEmployees();
   }
+
 
 
   ngOnInit(): void {
@@ -80,25 +82,71 @@ export class EmployeeList {
     //   ]
     // }
 
-
     // console.log(this.employees);
 
     // this.loading = true;
-    this.employeeService.getEmployees().pipe(delay(1000)).subscribe({
-      next: (data) => {
-        console.log("received Data", data);     //debug
-        this.employees = [...data];
-        this.dataSource.data = data;
-        // this.loading = false;
-        // this.cdr.detectChanges();
-        // console.log(this.loading);            //debug
+    // this.employeeService.getEmployees().pipe(delay(1000)).subscribe({
+    //   next: (data) => {
+    //     console.log("received Data", data);     //debug
+    //     this.employees = [...data];
+    //     this.dataSource.data = data;
+    //     // this.loading = false;
+    //     // this.cdr.detectChanges();
+    //     // console.log(this.loading);            //debug
+    //   }
+    //   ,
+    //   error: (err) => {
+    //     console.log(err);
+    //     // this.loading = false;
+    //   }
+    // });
+
+
+    // Check URL query parameter
+    this.aroute.queryParams.subscribe(params => {
+      const department = params['department'];
+      console.log("SELECTED DEPARTMENT : ", department);
+
+      if (department) {
+
+        // Department was selected from Dashboard
+        this.employeeService.getEmployeesByDepartment(department).subscribe({
+          next: (data) => {
+
+            console.log('Department employees:', data);
+
+            this.employees = [...data];
+            this.dataSource.data = data;
+
+          },
+
+          error: (err) => {
+            console.log(err);
+          }
+        });
       }
-      ,
-      error: (err) => {
-        console.log(err);
-        // this.loading = false;
+      else {
+
+        // No department selected → show all employees
+        this.employeeService
+          .getEmployees().subscribe({
+            next: (data) => {
+
+              console.log('All employees:', data);
+
+              this.employees = [...data];
+              this.dataSource.data = data;
+
+            },
+
+            error: (err) => {
+              console.log(err);
+            }
+          });
+
       }
     });
+
     //   data => {
     //   console.log("received Data", data);
     //   // console.log("Length",data.length);

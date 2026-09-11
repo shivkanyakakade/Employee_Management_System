@@ -71,7 +71,8 @@
 
         <div class="department-grid">
 
-            <mat-card class="department-card detailed-card" *ngFor="let dept of departmentcounts">
+            <mat-card class="department-card detailed-card" *ngFor="let dept of departmentcounts"
+                [routerLink]="['/employees']" [queryParams]="{ department: dept.name }">
 
                 <mat-card-content>
                     <mat-icon class="dept-icon">
@@ -82,7 +83,10 @@
 
                     <h1>{{ dept.count }}</h1>
 
-                    <p>Employees</p>
+                    <span class="view-link">
+                        View {{dept.name}} Employees
+                        <mat-icon>arrow_forward</mat-icon>
+                    </span>
 
                 </mat-card-content>
 

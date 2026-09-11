@@ -42,15 +42,17 @@ mat-card-content {
 
 .card h3 {
     margin: 0;
-    font-size: 18px;
+    font-size: 25px;
     font-weight: 500;
     color: #4caf50;
+
 }
 
 .card-icon {
     font-size: 50px;
     width: 55px;
     height: 55px;
+    color: gray;
 
 }
 
