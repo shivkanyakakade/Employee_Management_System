@@ -13,17 +13,35 @@ router.get('/', verifyToken, async (req, res) => {
 
     try {
 
+        const { department } = req.query;
+
+        let employees;
+
+        if (department) {
+
+            employees = await Employee.find({
+                department: department
+            });
+
+        } else {
+
+            employees = await Employee.find();
+
+        }
+
+        res.status(200).json(employees);
+
         //testing for showing spinner before loading data...
         // await new Promise(resolve =>
         //     setTimeout(resolve, 2000)
         // );
 
-        const employees =
-            await Employee.find();
+        // const employees =
+        //     await Employee.find();
 
-        res.status(200).json(
-            employees
-        );
+        // res.status(200).json(
+        //     employees
+        // );
 
     }
 
