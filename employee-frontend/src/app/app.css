@@ -1,60 +1,81 @@
+/* APPLICATION TOOLBAR */
+
 .toolbar {
-    background: linear-gradient(135deg, #3f51b5, #5c6bc0);
-    color: white;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    min-height: 70px;
     height: 70px;
     padding: 0 25px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    background: linear-gradient(135deg,
+            #3f51b5,
+            #5c6bc0);
+    color: white;
+    gap: 20px;
+    overflow: visible;
 }
 
+/* LOGO */
+
 .logo-section {
+    flex: 0 0 auto;
     display: flex;
     align-items: center;
     gap: 10px;
+    min-width: 0;
 }
 
 .logo-icon {
-    font-size: 32px;
+    flex-shrink: 0;
     width: 32px;
     height: 32px;
-    /* margin: 1px; */
+    font-size: 32px;
 }
 
 .logo-text {
     font-size: 22px;
     font-weight: 550;
+    white-space: nowrap;
 }
 
+/* NAVIGATION */
+
 .nav-links {
+    flex: 1 1 auto;
+    min-width: 0;
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
+    overflow: visible;
 }
 
 .nav-links button {
+    flex-shrink: 1;
     color: white;
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .nav-links mat-icon {
     margin-right: 5px;
 }
 
-.welcome {
-    font-size: 16px;
-    font-weight: 500;
-}
-
-button[mat-raised-button] {
-    border-radius: 20px;
-}
+/* RIGHT / PROFILE */
 
 .right-section {
+    flex: 0 0 auto;
+    min-width: 0;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
 }
 
-/* profile button */
+
+/* Profile button */
+
 .profile-btn {
     display: flex;
     align-items: center;
@@ -62,110 +83,211 @@ button[mat-raised-button] {
     gap: 5px;
     min-width: 150px;
     height: 40px;
-    background: rgba(255, 255, 255, .15);
-    border: 1px solid rgba(255, 255, 255, .3);
-    border-radius: 25px;
     padding: 6px 12px;
+    box-sizing: border-box;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
     color: white !important;
-    transition: .3s;
     cursor: pointer;
-
+    transition: 0.3s;
 }
 
-.profile-info {
+.profile-btn:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
 
+
+/* Profile icon */
+
+.profile-icon {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    color: white;
+}
+
+
+/* Profile information */
+
+.profile-info {
+    min-width: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: flex-start; */
     line-height: 1.15;
     flex: 1;
 }
 
-.profile-icon {
-
-    color: white;
-    width: 30px;
-    height: 30px;
-    font-size: 30px;
-
-}
-
 .profile-name {
-
     color: white;
     font-size: 15px;
     font-weight: 600;
-
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .profile-role {
-
     color: #dcdcdc;
     font-size: 13px;
-    letter-spacing: .4px;
-
+    letter-spacing: 0.4px;
+    white-space: nowrap;
 }
+
+
+/* Dropdown */
 
 .dropdown-icon {
-
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
     color: white;
-    font-size: 20px
 }
 
-.profile-btn:hover {
-    background: rgba(255, 255, 255, .25);
+/* MATERIAL MENU */
 
-}
-
-/* profile icon */
-.profile-btn mat-icon {
-    color: white;
-
-}
-
-/* menu items */
 .mat-mdc-menu-item mat-icon {
     margin-right: 5px;
     color: #3f51b5;
-
 }
 
+/* TABLET 769px → 1000px */
+
+@media (max-width: 1000px) {
+
+    .toolbar {
+        height: auto;
+        min-height: 70px;
+        padding: 10px 15px;
+        flex-wrap: wrap;
+        gap: 10px 15px;
+    }
 
 
+    /* Keep logo and profile on first row */
+
+    .logo-section {
+        order: 1;
+    }
+
+    .right-section {
+        order: 2;
+        margin-left: auto;
+    }
 
 
-/* .user-badge {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background: rgba(255, 255, 255, 0.15);
-    padding: 8px 15px;
-    border-radius: 20px;
+    /* Navigation gets its own row */
+
+    .nav-links {
+        order: 3;
+        flex: 1 0 100%;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
 }
 
-.reset-btn {
-    display: flex;
-    gap: 0px;
-    align-items: center;
-    color: white !important;
-    background: rgba(255, 255, 255, 0.15);
-    padding: 2px 8px;
-    border-radius: 20px;
-    border: 1px solid lightcyan; 
+/* MOBILE 600px and below */
+
+@media (max-width: 600px) {
+
+    .toolbar {
+        padding: 8px 10px;
+        gap: 8px;
+        min-height: auto;
+    }
+
+
+    /* Logo */
+
+    .logo-text {
+        display: none;
+    }
+
+
+    /* Profile */
+
+    .profile-info {
+        display: none;
+    }
+
+    .profile-btn {
+        min-width: 42px;
+        width: 42px;
+        height: 42px;
+        padding: 5px;
+        gap: 0;
+    }
+
+    .profile-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 28px;
+    }
+
+    .dropdown-icon {
+        display: none;
+    }
+
+
+    /* Navigation */
+
+    .nav-links {
+        width: 100%;
+        flex: 1 0 100%;
+        justify-content: space-around;
+        gap: 2px;
+    }
+
+    .nav-links button {
+        min-width: 0;
+        padding: 0 8px;
+    }
+
+
+    .nav-links mat-icon {
+        margin-right: 0;
+        font-size: 22px;
+        width: 22px;
+        height: 22px;
+    }
+
+
+    /* Hide button text */
+
+    .nav-links button {
+        font-size: 0;
+    }
+
+    .nav-links button mat-icon {
+        font-size: 22px;
+    }
 }
 
-.reset-btn mat-icon {
-    color: white;
-    font-size: 20px;
+/* SMALL PHONES 400px and below */
+
+@media (max-width: 400px) {
+
+    .toolbar {
+        padding: 7px 8px;
+    }
+
+    .nav-links {
+        gap: 0;
+    }
+
+    .nav-links button {
+        padding: 0 5px;
+    }
+
+    .nav-links mat-icon {
+        font-size: 20px;
+        width: 20px;
+        height: 20px;
+    }
+
 }
-
-.reset-btn:hover {
-    background: rgba(255, 255, 255, 0.15);
-} */
-
-/* .app-container{
-    background: #f5f7fb;
-    min-height: 690px;
-    height: 100%;
-} */
