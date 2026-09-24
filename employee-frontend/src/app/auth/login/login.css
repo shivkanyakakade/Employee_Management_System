@@ -1,63 +1,301 @@
-/* Full page background */
-body {
+/* LOGIN PAGE */
+
+.login-page {
+    width: 100%;
+    min-height: 100vh;
+
     margin: 0;
     padding: 0;
-    background: #f5f7fb;
-    background-color: yellow;
+
     font-family: Arial, sans-serif;
+
+    /* Remove the background image from the actual container */
+    background: transparent;
+
+    /* Center login card */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Required for pseudo-elements */
+    position: relative;
+
+    /* Keep content above background */
+    overflow: hidden;
+
+    box-sizing: border-box;
 }
 
 
+/* BLURRED BACKGROUND IMAGE */
 
-/* Login card */
+.login-page::before {
+    content: "";
+
+    position: absolute;
+    inset: -15px;
+
+    background-image: url('../../../assets/login.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    /* Blur ONLY the background */
+    filter: blur(4px);
+
+    /* Prevents white/empty edges caused by blur */
+    transform: scale(1.05);
+
+    z-index: 0;
+}
+
+
+/* DARK OVERLAY */
+
+.login-page::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    /* Adjust this value to control darkness */
+    background: rgba(0, 0, 0, 0.20);
+
+    z-index: 1;
+}
+
+
+/* LOGIN CARD */
+
 .login-card {
-    width: 400px;
-    margin: 90px auto;
+    position: relative;
+    z-index: 2;
+
+    width: 500px;
+
+    margin: 0;
     padding: 30px;
+
     border-radius: 12px;
+
+    /* Keep card clear and readable */
+    background: rgba(255, 255, 255, 0.95);
+
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 
+    box-sizing: border-box;
 }
 
-/* Title */
+
+/* CARD TITLE */
+
 mat-card-title {
     display: block;
+
     text-align: center;
+
     font-size: 30px;
     font-weight: 550;
+
     color: #3f51b5;
+
     margin-bottom: 25px;
 }
 
-/* Input fields */
-.full-width {
+
+/* FORM */
+
+form {
     width: 100%;
-    margin-bottom: 15px;
 }
 
-/* Login button */
+
+/* INPUT FIELDS */
+
+.full-width {
+    width: 100%;
+
+    margin-bottom: 15px;
+
+    box-sizing: border-box;
+}
+
+
+/* LOGIN BUTTON */
+
 button {
     width: 100%;
+
     height: 45px;
+
     font-size: 16px;
+
     margin-top: 10px;
 }
 
-/* Register text */
+
+/* REGISTER TEXT */
+
 p {
     text-align: center;
+
     margin-top: 20px;
+
     font-size: 14px;
 }
 
-/* Register link */
+
+/* REGISTER LINK */
+
 a {
     color: #3f51b5;
+
     text-decoration: none;
+
     font-weight: 500;
+
     cursor: pointer;
 }
 
 a:hover {
     text-decoration: underline;
+}
+
+
+/* DEMO LOGIN SECTION */
+
+.demo-login {
+    width: 100%;
+
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+
+    text-align: center;
+}
+
+
+/* DEMO TITLE */
+
+.demo-title {
+    font-size: 17px;
+    font-weight: 600;
+
+    color: #333;
+    margin-bottom: 5px;
+}
+
+
+/* DEMO SUBTITLE */
+
+.demo-subtitle {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+
+/* DEMO BUTTON CONTAINER */
+
+.demo-buttons {
+    display: flex;
+
+    gap: 12px;
+
+    width: 100%;
+}
+
+
+/* DEMO BUTTONS */
+
+.demo-button {
+    flex: 1;
+
+    height: 42px;
+
+    font-size: 13px;
+    font-weight: 500;
+
+    border-radius: 6px;
+
+    transition:
+        background-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* ADMIN BUTTON */
+
+.admin-button {
+    color: #3f51b5;
+    border-color: #3f51b5;
+}
+
+
+/* EMPLOYEE BUTTON */
+
+.employee-button {
+    color: #00897b;
+    border-color: #00897b;
+}
+
+
+/* BUTTON HOVER */
+
+.admin-button:hover {
+    background-color: rgba(63, 81, 181, 0.08);
+
+    box-shadow: 0 2px 6px rgba(63, 81, 181, 0.2);
+    color: #3f51b5;
+    border-color: #3f51b5;
+    transform: translateY(-1px);
+}
+
+.employee-button:hover {
+    background-color: rgba(0, 137, 123, 0.08);
+
+    box-shadow: 0 2px 6px rgba(0, 137, 123, 0.2);
+    color: #00897b;
+    border-color: #00897b;
+    transform: translateY(-1px);
+}
+
+
+/*BUTTON ICON*/
+
+.demo-icon {
+    margin-right: 5px;
+    font-size: 15px;
+}
+
+
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 500px) {
+
+    .login-page {
+        padding: 20px;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 400px;
+        padding: 25px;
+    }
+
+    mat-card-title {
+        font-size: 26px;
+    }
+
+    .demo-buttons {
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+    .demo-button {
+        width: 100%;
+    }
 }

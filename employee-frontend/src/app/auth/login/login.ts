@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
 import { ChangeDetectorRef } from '@angular/core';
+// import { SessionService } from '../../services/session.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ import { ChangeDetectorRef } from '@angular/core';
 export class Login {
 
   loginform!: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router, private authservice: Auth, private snackbar: MatSnackBar, private cd: ChangeDetectorRef) {
+  constructor( private fb: FormBuilder, private router: Router, private authservice: Auth, private snackbar: MatSnackBar, private cd: ChangeDetectorRef) {
     this.loginform = this.fb.group({
 
       email: [
@@ -38,6 +39,20 @@ export class Login {
     });
   }
 
+  loginAsAdmin(): void {
+    this.loginform.patchValue({
+      email: 'admin@ems-demo.com',
+      password: 'Admin@123'
+    });
+  }
+
+  loginAsEmployee(): void {
+    this.loginform.patchValue({
+      email: 'employee@ems-demo.com',
+      password: 'Employee@123'
+    });
+  }
+
   onSubmit() {
 
     if (this.loginform.invalid) return;
@@ -48,16 +63,17 @@ export class Login {
         console.log("Login Component : ", response);
 
         //Localstorage token
-        localStorage.setItem('token',response.token);
+        localStorage.setItem('token', response.token);
 
         //Localstorage NAME
-        localStorage.setItem('username', response.user.name );
+        localStorage.setItem('username', response.user.name);
 
-        localStorage.setItem('email',response.user.email);
+        localStorage.setItem('email', response.user.email);
 
         //Localstorage ROLE
         localStorage.setItem('role', response.user.role);
 
+        // this.sessionservice.startSessionTimer();
         this.router.navigate(['/dashboard']);
 
         // console.log("Localstorage Token : ", localStorage.getItem('token'));
@@ -79,7 +95,7 @@ export class Login {
 
         // this.cd.detectChanges();
 
-        
+
       }
     })
   }
