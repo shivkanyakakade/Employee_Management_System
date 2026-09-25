@@ -10,6 +10,7 @@ import { guestGuard } from './guards/guest-guard';
 import { roleGuard } from './guards/role-guard';
 import { ResetPassword } from './reset-password/reset-password';
 import { Departments } from './departments/departments';
+import { PageNotFound } from './page-not-found/page-not-found';
 
 export const routes: Routes = [
 
@@ -70,7 +71,7 @@ export const routes: Routes = [
 
     {
         path: '**',
-        component: Login
+        component: PageNotFound
     }
 ];
 
