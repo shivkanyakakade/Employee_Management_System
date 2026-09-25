@@ -1,5 +1,7 @@
-import { Service, Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+// import { SessionService } from './sessionservice';
 
 @Injectable({
     providedIn: 'root'
@@ -7,7 +9,9 @@ import { HttpClient } from '@angular/common/http';
 
 export class Auth {
 
-    private apiURL = 'https://employee-management-backend-m7dx.onrender.com/api/auth';
+    private apiURL = 'http://localhost:5000/api/auth';
+    private router = inject(Router);
+    // private sessionservice = inject(SessionService);
 
     constructor(private http: HttpClient) {
 
@@ -37,6 +41,13 @@ export class Auth {
 
     LogOut() {
         localStorage.removeItem('token');
+        localStorage.removeItem('username');
+        localStorage.removeItem('email');
+        localStorage.removeItem('role');
+
+        // localStorage.clear();
+
+        this.router.navigate(['/login']);
     }
 
     getRole() {
