@@ -10,7 +10,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
 import { MatSelectModule } from '@angular/material/select';
-import { email } from '@angular/forms/signals';
 
 @Component({
   selector: 'app-employee-form',
@@ -86,6 +85,7 @@ export class EmployeeForm implements OnInit {
     }
 
     console.log("editMode : ", this.editMode);
+
     //LocalStorage Version----
 
     // if (id) {
@@ -117,13 +117,35 @@ export class EmployeeForm implements OnInit {
 
   }
 
+  formatDepartment(department: string): string {
+
+    if (!department) {
+      return '';
+    }
+
+    const value = department.trim();
+
+    // Special abbreviations
+    const upperCaseDepartments = ['hr', 'it'];
+
+    if (upperCaseDepartments.includes(value.toLowerCase())) {
+      return value.toUpperCase();
+    }
+
+    return value.toLowerCase().split(/\s+/).map(word =>
+      word.charAt(0).toUpperCase() + word.slice(1)
+    )
+      .join(' ');
+  }
+
   onSubmit() {
+
     if (this.employeeForm.invalid) {
       console.log("Form data invalid");
       return;
     }
 
-    console.log("Emloyee Form : ",this.employeeForm.value);
+    console.log("Emloyee Form : ", this.employeeForm.value);
 
     const newEmployee = {
       //no need to add id in json , it will create automatically
@@ -136,12 +158,15 @@ export class EmployeeForm implements OnInit {
       name: this.employeeForm.value.name || '',
       email: this.employeeForm.value.email || '',
       mobile: this.employeeForm.value.mobile || '',
-      department: this.employeeForm.value.department || '',
-      password: this.employeeForm.value.password ||'',
+      // department: this.employeeForm.value.department || '',
+      department: this.formatDepartment(
+        this.employeeForm.value.department || ''
+      ),
+      password: this.employeeForm.value.password || '',
       role: this.employeeForm.value.role
     };
 
-    console.log("New EMP: ",newEmployee);
+    console.log("New EMP: ", newEmployee);
 
     if (this.editMode) {
 
