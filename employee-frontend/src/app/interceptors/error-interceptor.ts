@@ -1,19 +1,20 @@
 import { HttpInterceptorFn } from '@angular/common/http';
 import { inject, Inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { Auth } from '../services/auth';
 import { catchError, throwError } from 'rxjs';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
   const snackbar = inject(MatSnackBar);
+  const authService = inject(Auth);
 
   return next(req).pipe(
     catchError((error) => {
 
-      console.log('Full Error',error);
-      console.log('Error Message',error.message);
-      console.log('Error',error.error);
+      console.log('Full Error', error);
+      console.log('Error Message', error.message);
+      console.log('Error', error.error);
 
       // let errormessage = "something went wrong";
 
@@ -35,6 +36,7 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
 
         case 401:
           errormessage = "Unauthorized : Please Login again";
+          authService.LogOut();
           break;
 
         case 403:
@@ -42,8 +44,8 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
           break;
 
         case 404:
-          errormessage = 
-          error.error?.message|| "Resource Not Found";
+          errormessage =
+            error.error?.message || "Resource Not Found";
           break;
 
         case 500:
