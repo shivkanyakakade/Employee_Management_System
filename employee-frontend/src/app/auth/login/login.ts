@@ -10,8 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 
 import { ChangeDetectorRef } from '@angular/core';
-// import { SessionService } from '../../services/session.service';
-
+import { SessionService } from '../../services/sessionservice';
 
 @Component({
   selector: 'app-login',
@@ -22,7 +21,7 @@ import { ChangeDetectorRef } from '@angular/core';
 export class Login {
 
   loginform!: FormGroup;
-  constructor( private fb: FormBuilder, private router: Router, private authservice: Auth, private snackbar: MatSnackBar, private cd: ChangeDetectorRef) {
+  constructor(private sessionservice: SessionService, private fb: FormBuilder, private router: Router, private authservice: Auth, private snackbar: MatSnackBar, private cd: ChangeDetectorRef) {
     this.loginform = this.fb.group({
 
       email: [
@@ -73,7 +72,7 @@ export class Login {
         //Localstorage ROLE
         localStorage.setItem('role', response.user.role);
 
-        // this.sessionservice.startSessionTimer();
+        this.sessionservice.startSessionTimer();
         this.router.navigate(['/dashboard']);
 
         // console.log("Localstorage Token : ", localStorage.getItem('token'));
