@@ -9,7 +9,10 @@ import { Router } from '@angular/router';
 
 export class Auth {
 
-    private apiURL = 'http://localhost:5000/api/auth';
+    // private apiURL = 'http://localhost:5000/api/auth';
+    
+    private apiURL = '    https://employee-management-backend-m7dx.onrender.com/api/auth';
+
     private router = inject(Router);
     // private sessionservice = inject(SessionService);
 
