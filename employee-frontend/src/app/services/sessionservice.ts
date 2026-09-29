@@ -7,20 +7,23 @@ import { TokenService } from './tokenservice';
 })
 export class SessionService {
 
-    private logoutTimer: any;
+    private logoutTimer: ReturnType<typeof setTimeout> | null = null;
     sessionExpired = new Subject<void>();
 
     constructor(
-        // private authService: Auth,
         private tokenService: TokenService
     ) { }
 
     startSessionTimer(): void {
 
+        this.clearTimer();
+
         const remainingTime = this.tokenService.getRemainingTime();
+        console.log("Token Remaining Time : ", remainingTime);
 
         if (remainingTime <= 0) {
 
+            console.log("Token already expired....");
             // this.authService.LogOut();
             this.sessionExpired.next();
             return;
@@ -28,8 +31,7 @@ export class SessionService {
         }
 
         this.logoutTimer = setTimeout(() => {
-            // alert('Session Expired. Please login again.');
-            // this.authService.LogOut();
+            console.log("Session Expired..");
 
             this.sessionExpired.next();
         }, remainingTime);
@@ -38,9 +40,10 @@ export class SessionService {
 
     clearTimer(): void {
 
-        // if (this.logoutTimer) {
-        clearTimeout(this.logoutTimer);
-        // }
+        if (this.logoutTimer) {
+            clearTimeout(this.logoutTimer);
+            this.logoutTimer = null;
+        }
 
     }
 

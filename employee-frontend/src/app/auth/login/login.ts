@@ -75,14 +75,6 @@ export class Login {
         this.sessionservice.startSessionTimer();
         this.router.navigate(['/dashboard']);
 
-        // console.log("Localstorage Token : ", localStorage.getItem('token'));
-        // console.log("Localstorage USername : ", localStorage.getItem('username'));
-        // console.log("Localstorage Role", localStorage.getItem('role'));
-        // console.log("localstorage email = ",localStorage.getItem('email'));
-
-        // This forces AppComponent to reload and read the new username....
-        // window.location.reload();
-
         this.snackbar.open(
           `Welcome ${this.loginform.value.email} \n to EMPLOYEE MANAGEMENT SYSTEM `,
           'close',
@@ -91,6 +83,8 @@ export class Login {
           }
         )
 
+        // This forces AppComponent to reload and read the new username....
+        // window.location.reload();
 
         // this.cd.detectChanges();
 
