@@ -1,0 +1,114 @@
+.employee-card {
+width: 700px;
+max-width: 90%;
+margin: 50px auto;
+padding: 5px;
+border-radius: 12px;
+
+/* background: rgba(255, 255, 255, 0.95); */
+
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+mat-card-header {
+display: block;
+text-align: center;
+}
+
+.employee-avatar {
+margin: 0 auto 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+
+width: 55px;
+height: 55px;
+border-radius: 50%;
+
+background: #3f51b5;
+color: white;
+
+font-size: 22px;
+font-weight: 600;
+}
+
+mat-card-title {
+font-size: 30px;
+font-weight: 550;
+color: #3f51b5;
+margin-bottom: 8px;
+}
+
+mat-card-subtitle {
+font-size: 14px;
+color: #777;
+}
+
+.employee-name {
+text-align: center;
+font-size: 25px;
+font-weight: 600;
+margin: 25px 0;
+color: #222;
+}
+
+.details-grid {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 15px;
+}
+
+.detail-item {
+display: flex;
+flex-direction: column;
+gap: 7px;
+
+padding: 15px;
+border-radius: 8px;
+background: #f4f6f9;
+border: 1px solid #e0e0e0;
+}
+
+.detail-item strong {
+font-size: 13px;
+color: #666;
+text-transform: uppercase;
+}
+
+.detail-item span {
+font-size: 16px;
+color: #222;
+word-break: break-word;
+}
+
+mat-card-actions {
+display: flex;
+justify-content: center;
+margin-top: 20px;
+}
+
+button {
+width: 100%;
+height: 45px;
+font-size: 16px;
+}
+
+@media (max-width: 600px) {
+.employee-card {
+width: 90%;
+margin: 30px auto;
+padding: 15px;
+}
+
+.details-grid {
+grid-template-columns: 1fr;
+}
+
+mat-card-title {
+font-size: 25px;
+}
+
+.employee-name {
+font-size: 22px;
+}
+}

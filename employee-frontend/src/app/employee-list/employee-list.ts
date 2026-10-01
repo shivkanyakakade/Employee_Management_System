@@ -1,4 +1,4 @@
-import { Component, OnInit, viewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Employeemodal } from '../models/employee.model';
 import { Employeeservice } from '../services/employeeservice';
 import { Auth } from '../services/auth';
@@ -20,7 +20,6 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ViewChild } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ActivatedRoute } from '@angular/router';
-import { delay } from 'rxjs';
 
 
 @Component({
@@ -34,12 +33,10 @@ import { delay } from 'rxjs';
 
 export class EmployeeList {
 
-  // loading = false;
 
   isAdmin = false;
   getEmail: any = '';
   employees: Employeemodal[] = [];
-  // filteredemployees: Employeemodal[] = [];   
 
   dataSource = new MatTableDataSource<Employeemodal>();   //with pagination
   searchText = '';
@@ -50,7 +47,6 @@ export class EmployeeList {
   @ViewChild(MatSort) sort !: MatSort;                        //Sorting Table data according to Headers
 
   constructor(private aroute: ActivatedRoute, public authservice: Auth, private employeeService: Employeeservice, private cdr: ChangeDetectorRef, private router: Router, private snackbar: MatSnackBar, private dialog: MatDialog) {
-    // this.employees = this.employeeService.getEmployees();
   }
 
 
@@ -62,7 +58,6 @@ export class EmployeeList {
     this.isAdmin = this.authservice.isAdmin();
     this.getEmail = this.authservice.getEmail();
 
-    // if (this.isAdmin) {
     this.displayedColumns = [
       'id',
       'name',
@@ -71,36 +66,6 @@ export class EmployeeList {
       'department',
       'action'
     ]
-    // }
-    // else {
-    //   this.displayedColumns = [
-    //     'id',
-    //     'name',
-    //     'email',
-    //     'mobile',
-    //     'department'
-    //   ]
-    // }
-
-    // console.log(this.employees);
-
-    // this.loading = true;
-    // this.employeeService.getEmployees().pipe(delay(1000)).subscribe({
-    //   next: (data) => {
-    //     console.log("received Data", data);     //debug
-    //     this.employees = [...data];
-    //     this.dataSource.data = data;
-    //     // this.loading = false;
-    //     // this.cdr.detectChanges();
-    //     // console.log(this.loading);            //debug
-    //   }
-    //   ,
-    //   error: (err) => {
-    //     console.log(err);
-    //     // this.loading = false;
-    //   }
-    // });
-
 
     // Check URL query parameter
     this.aroute.queryParams.subscribe(params => {
@@ -109,7 +74,7 @@ export class EmployeeList {
 
       if (department) {
 
-        // Department was selected from Dashboard
+        // Department selected from Dashboard
         this.employeeService.getEmployeesByDepartment(department).subscribe({
           next: (data) => {
 
@@ -147,27 +112,6 @@ export class EmployeeList {
       }
     });
 
-    //   data => {
-    //   console.log("received Data", data);
-    //   // console.log("Length",data.length);
-
-    //   this.employees = [...data];           //original array 
-    //   // this.filteredemployees = [...data];  //for search employee
-    //   this.dataSource.data = data;           //pagination
-
-    //   if (this.paginator) {
-    //     this.dataSource.paginator = this.paginator;
-    //   }
-
-    //   // if (this.sort) {
-    //   //   this.dataSource.sort = this.sort;
-    //   // }
-
-    //   this.cdr.detectChanges();
-    //   console.log("Emp in compo ????", this.employees);
-
-    // }
-
 
   }
 
@@ -176,6 +120,12 @@ export class EmployeeList {
     this.dataSource.sort = this.sort;
   }
 
+  viewEmployee(id: string): void {
+
+    console.log('Employee ID:', id);
+
+    this.router.navigate(['/employees', id]);
+  }
 
   deleteEmployee(id: number) {
 
@@ -221,7 +171,6 @@ export class EmployeeList {
   }
 
   editEmployee(employee: Employeemodal) {
-    // this.employeeService.editEmployee(employee);   //without routing only by behaviourSubject
 
     this.router.navigate([
       '/edit-employee',
@@ -231,15 +180,6 @@ export class EmployeeList {
   }
 
   searchEmployee() {
-    // when it "" empty string value then-> all values include this "" (empty string) so display all records
-
-    // const search = this.searchText.toLowerCase();
-
-    // this.filteredemployees = this.employees.filter(emp =>
-    //   emp.name.toLowerCase().includes(search) ||
-    //   emp.email.toLowerCase().includes(search) ||
-    //   emp.department.toLowerCase().includes(search)
-    // );
 
     this.dataSource.filter = this.searchText.trim().toLowerCase();   //pagination
   }

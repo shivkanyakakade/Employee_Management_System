@@ -15,6 +15,7 @@ export class Employeeservice {
 
     //Node.js + MongoDB HTTP
     // private apiurl = 'http://localhost:5000/employees';
+
     private apiurl = 'https://employee-management-backend-m7dx.onrender.com/employees';
 
 
@@ -199,11 +200,9 @@ export class Employeeservice {
     getEmployeeById(id: any) {
 
         //Json Server VErsion
-
         return this.http.get<Employeemodal>(`${this.apiurl}/${id}`);
 
         //Array-VErsion
-
         // return this.employees.find(
         //     emp => emp.id === id
         // );

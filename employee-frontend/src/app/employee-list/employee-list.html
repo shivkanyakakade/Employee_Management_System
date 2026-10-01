@@ -5,7 +5,6 @@
     </mat-card-title>
     <hr>
 
-    <!-- <h3>Total Employees: {{ dataSource.data.length }}</h3> -->
 
     <mat-form-field appearance="outline">
 
@@ -15,20 +14,9 @@
 
     </mat-form-field>
 
-    <!-- @if(loading){
-
-    <div class="spinner-container">
-        <mat-spinner></mat-spinner>
-    </div>
-
-    } -->
-
-    <!-- [hidden]="loading" -->
 
     <div class="table-container">
-        <!-- <table mat-table [dataSource]="filteredemployees"> -->
 
-        <!-- while pagination filteredemployees -> dataSource -->
         <table mat-table [dataSource]="dataSource" matSort>
 
             <!-- ID -->
@@ -82,9 +70,15 @@
 
                     <!-- Admin -->
                     <div class="action-buttons" *ngIf="isAdmin">
+
+                        <button mat-stroked-button class="view-link"  (click)="viewEmployee(emp._id)">
+                            View
+                        </button>
+
                         <button mat-raised-button (click)="editEmployee(emp)">
                             Edit
-                        </button> &nbsp;
+                        </button> 
+
                         <button mat-raised-button (click)="deleteEmployee(emp._id)">
                             Delete
                         </button>
@@ -92,15 +86,16 @@
 
                     <!-- Employee -->
                     <div class="action-buttons" *ngIf="!isAdmin">
-                        <button *ngIf="emp.email === getEmail" mat-raised-button
-                            (click)="editEmployee(emp)">
 
-                            Edit
-
+                        <button mat-stroked-button class="view-link"  (click)="viewEmployee(emp._id)">
+                            View
                         </button>
 
-                        <!-- <p>  {{emp.email}}</p>
-                        <p> {{getEmail}}</p> -->
+                        <button *ngIf="emp.email === getEmail" mat-raised-button
+                            (click)="editEmployee(emp)">
+                            Edit
+                        </button>
+
                     </div>
                 </td>
 
@@ -120,40 +115,3 @@
 
 </mat-card>
 
-
-<!-- <h2>Employee List</h2>
-<h6>Total Employee :: {{filteredemployees.length}}</h6>
-<input type="text" placeholder="Search Employee" [(ngModel)]="searchText" (input)="searchEmployee()" />
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Mobile</th>
-            <th>Department</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-
-        @for(emp of filteredemployees; track emp.id){
-        <tr>
-            <td>{{emp.id}}</td>
-            <td>{{emp.name}}</td>
-            <td>{{emp.email}}</td>
-            <td>{{emp.mobile}}</td>
-            <td>{{emp.department}}</td>
-            <td>
-                <button (click)="editEmployee(emp)">
-                    Edit
-                </button>
-                <button (click)="deleteEmployee(emp.id)">
-                    Delete
-                </button>
-            </td>
-        </tr>
-        }
-    </tbody>
-
-</table> -->

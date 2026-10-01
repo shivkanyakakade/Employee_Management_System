@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { EmployeeForm } from './employee-form/employee-form';
 import { EmployeeList } from './employee-list/employee-list';
 import { Login } from './auth/login/login';
-import { Register } from './auth/register/register';
 import { Dashboard } from './dashboard/dashboard';
 
 import { authGuard } from './guards/auth-guard';
@@ -11,6 +10,7 @@ import { roleGuard } from './guards/role-guard';
 import { ResetPassword } from './reset-password/reset-password';
 import { Departments } from './departments/departments';
 import { PageNotFound } from './page-not-found/page-not-found';
+import { Employeedetails } from './employeedetails/employeedetails';
 
 export const routes: Routes = [
 
@@ -42,6 +42,12 @@ export const routes: Routes = [
     {
         path: 'employees',
         component: EmployeeList,
+        canActivate: [authGuard]
+    },
+
+     {
+        path: 'employees/:id',
+        component: Employeedetails,
         canActivate: [authGuard]
     },
 

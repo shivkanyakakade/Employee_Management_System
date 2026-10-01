@@ -1,0 +1,56 @@
+
+    <mat-card class="employee-card">
+
+
+        <mat-card-header class="employee-header">
+            <div mat-card-avatar class="employee-avatar">
+                {{ emp()?.name?.charAt(0)?.toUpperCase() || '?' }}
+            </div>
+
+            <mat-card-title>Employee Details</mat-card-title>
+            <mat-card-subtitle>
+                Employee information
+            </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+
+            <div class="employee-name">
+                {{ emp()?.name || 'Employee' }}
+            </div>
+
+            <div class="details-grid">
+
+                <div class="detail-item">
+                    <span class="detail-label">Employee ID</span>
+                    <span class="detail-value">{{ emp()?._id || 'N/A' }}</span>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Email</span>
+                    <span class="detail-value">{{ emp()?.email || 'N/A' }}</span>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Department</span>
+                    <span class="detail-value">{{ emp()?.department || 'N/A' }}</span>
+                </div>
+
+                <div class="detail-item">
+                    <span class="detail-label">Mobile</span>
+                    <span class="detail-value">{{ emp()?.mobile || 'N/A' }}</span>
+                </div>
+
+            </div>
+
+        </mat-card-content>
+
+        <mat-card-actions class="employee-actions">
+            <button mat-stroked-button routerLink="/employees">
+                Back to Employees
+            </button>
+        </mat-card-actions>
+
+
+    </mat-card>
+

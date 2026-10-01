@@ -1,7 +1,3 @@
-/* mat-card {
-    margin: 20px;
-    padding: 20px;
-} */
 mat-card {
     margin: 20px auto;
     max-width: 1200px;
@@ -36,4 +32,16 @@ table {
     justify-content: center;
     align-items: center;
     height: 300px;
+}
+
+
+
+.view-link {
+    min-width: auto;
+    padding: 0 8px;
+    color: #1976d2;
+}
+
+.view-link:hover {
+    text-decoration: underline;
 }
