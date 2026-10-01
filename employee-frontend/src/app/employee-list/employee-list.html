@@ -75,11 +75,11 @@
                             View
                         </button>
 
-                        <button mat-raised-button (click)="editEmployee(emp)">
+                        <button mat-stroked-button (click)="editEmployee(emp)">
                             Edit
                         </button> 
 
-                        <button mat-raised-button (click)="deleteEmployee(emp._id)">
+                        <button mat-stroked-button (click)="deleteEmployee(emp._id)">
                             Delete
                         </button>
                     </div>
@@ -91,7 +91,7 @@
                             View
                         </button>
 
-                        <button *ngIf="emp.email === getEmail" mat-raised-button
+                        <button *ngIf="emp.email === getEmail" mat-stroked-button
                             (click)="editEmployee(emp)">
                             Edit
                         </button>
