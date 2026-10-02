@@ -36,6 +36,7 @@ export class Employeedetails implements OnInit, OnDestroy {
       this.empservice.getEmployeeById({ id }).subscribe({
         next: employee => {
 
+          console.log("ID In EmployeeDetails : ",id);
           console.log('EMPLOYEE RESPONSE:', employee);
           this.emp.set(employee);
 
