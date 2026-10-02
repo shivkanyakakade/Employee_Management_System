@@ -25,32 +25,30 @@ export class Employeedetails implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
-    console.log('Employeedetails CREATED');
-
     const id = this.route.snapshot.paramMap.get('id');
 
-    console.log("employee id from URL : ", id);
+    console.log('ID FROM URL:', id);
+    console.log('TYPE OF ID:', typeof id);
 
     if (id) {
-      this.empservice.getEmployeeById({ id }).subscribe({
-        next: employee => {
-
-          console.log("ID In EmployeeDetails : ",id);
-          console.log('EMPLOYEE RESPONSE:', employee);
-          this.emp.set(employee);
-
-          // this.emp = employee;
-
-          console.log('EMP AFTER ASSIGNMENT:', this.emp);
-
-        },
-        error: error => {
-          console.error('EMPLOYEE ERROR:', error);
-        }
-      });
+      this.getEmployeeDetails(id);
     }
+  }
 
+  getEmployeeDetails(id: string): void {
+
+    console.log('ID SENT TO SERVICE:', id);
+    console.log('TYPE SENT TO SERVICE:', typeof id);
+
+    this.empservice.getEmployeeById(id).subscribe({
+      next: employee => {
+        console.log('EMPLOYEE RESPONSE:', employee);
+        this.emp.set(employee);
+      },
+      error: error => {
+        console.error('EMPLOYEE ERROR:', error);
+      }
+    });
   }
 
   ngOnDestroy(): void {
