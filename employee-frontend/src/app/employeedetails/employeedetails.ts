@@ -38,9 +38,10 @@ export class Employeedetails implements OnInit, OnDestroy {
 
           console.log('EMPLOYEE RESPONSE:', employee);
           this.emp.set(employee);
+
           // this.emp = employee;
 
-          // console.log('EMP AFTER ASSIGNMENT:', this.emp);
+          console.log('EMP AFTER ASSIGNMENT:', this.emp);
 
         },
         error: error => {

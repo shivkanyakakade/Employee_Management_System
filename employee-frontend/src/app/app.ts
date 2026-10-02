@@ -28,8 +28,6 @@ export class App {
 
   constructor(private sessionservice: SessionService, public authservice: Auth, private router: Router, private snackbar: MatSnackBar) {
 
-
-
   }
 
 
