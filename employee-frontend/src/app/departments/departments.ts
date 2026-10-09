@@ -14,6 +14,7 @@ import { Departmentservice } from '../services/departmentservice';
 })
 export class Departments {
 
+  departmentcounts: any[] = [];
   departments: string[] = [];
 
   constructor(private deptserv: Departmentservice, private empservice: Employeeservice, private cdr: ChangeDetectorRef) {
@@ -44,6 +45,34 @@ export class Departments {
         }
 
       });
+
+    this.empservice.getEmployees().subscribe(data => {
+
+      //for Departmentwise count
+      this.departmentcounts = [];
+
+      const deptMap = new Map();
+
+      data.forEach(emp => {
+        const dept = emp.department;
+
+        deptMap.set(
+          dept,
+          (deptMap.get(dept) || 0) + 1
+        );
+      });
+
+      this.departmentcounts =
+        Array.from(deptMap, ([name, count]) => ({
+          name,
+          count
+        }));
+
+      console.log("Department count : ", this.departmentcounts);
+      this.cdr.detectChanges();
+
+    })
+
 
 
   }
