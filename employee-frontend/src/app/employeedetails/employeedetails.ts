@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Employeeservice } from '../services/employeeservice';
-
+import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
@@ -11,7 +11,7 @@ import { JsonPipe } from '@angular/common';
 @Component({
   selector: 'app-employeedetails',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, RouterLink, CommonModule, JsonPipe],
+  imports: [MatIconModule, MatCardModule, MatButtonModule, RouterLink, CommonModule, JsonPipe],
   templateUrl: './employeedetails.html',
   styleUrl: './employeedetails.css',
 })
@@ -31,25 +31,20 @@ export class Employeedetails implements OnInit, OnDestroy {
     console.log('TYPE OF ID:', typeof id);
 
     if (id) {
-      this.getEmployeeDetails(id);
+      this.empservice.getEmployeeById({ id }).subscribe({
+        next: employee => {
+
+          console.log('EMPLOYEE RESPONSE:', employee);
+          this.emp.set(employee);
+
+        },
+        error: error => {
+          console.error('EMPLOYEE ERROR:', error);
+        }
+      });
     }
   }
 
-  getEmployeeDetails(id: string): void {
-
-    console.log('ID SENT TO SERVICE:', id);
-    console.log('TYPE SENT TO SERVICE:', typeof id);
-
-    this.empservice.getEmployeeById(id).subscribe({
-      next: employee => {
-        console.log('EMPLOYEE RESPONSE:', employee);
-        this.emp.set(employee);
-      },
-      error: error => {
-        console.error('EMPLOYEE ERROR:', error);
-      }
-    });
-  }
 
   ngOnDestroy(): void {
     console.log("EmployeeDetails Destroyed...")
