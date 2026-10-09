@@ -1,9 +1,10 @@
 .department-grid {
     display: grid;
     justify-content: center;
-    flex-wrap: wrap;
-    /* margin-top: 10px; */
     grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+    gap: 5px;
+    padding: 5px;
+    padding-bottom: 20px;
 }
 
 /* Card Styling */
@@ -11,18 +12,16 @@
 .card {
     margin-top: 20px;
     padding: 0;
-    max-width: 250px;
+    width: 100%;
+    max-width: 280px;
     height: 200px;
+    box-sizing: border-box;
     border-radius: 15px;
-    transition: all 0.3s ease;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
     cursor: pointer;
     border-top: 5px solid #4caf50;
-    box-shadow:
-        0 8px 25px rgba(0, 0, 0, .08);
-    /* box-sizing: border-box; */
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .08);
+    overflow: hidden;
 }
 
 .card:hover {
@@ -32,17 +31,17 @@
 
 
 /* Card Content */
-
 .card mat-card-content {
-    min-height: 185px;
+    height: 100%;
+    min-height: 0;
+    width: 100%;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-
     align-items: center;
     justify-content: center;
     text-align: center;
-
-    padding: 0;
+    padding: 8px;
     gap: 5px;
 }
 
@@ -55,6 +54,7 @@
     line-height: 1.2;
     font-weight: 600;
     color: #4caf50;
+    overflow-wrap: anywhere;
 
 }
 
@@ -80,20 +80,21 @@
 }
 
 .card .view-link {
-    display: inline-flex;
-
+    display: flex;
     align-items: center;
     justify-content: center;
-
     gap: 2px;
-
     margin-top: 5px;
-
-    font-size: 16px;
-    line-height: 20px;
+    max-width: 100%;
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 18px;
     font-weight: 500;
-
     color: #3f51b5;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
 
-    white-space: nowrap;
+.card .view-link mat-icon {
+    flex-shrink: 0;
 }
