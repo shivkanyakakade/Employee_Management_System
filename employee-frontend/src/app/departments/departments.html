@@ -1,17 +1,22 @@
-<!-- <h2>Departments</h2> -->
-<!-- <h3>Total Departments : {{departments.length}} </h3> -->
-
-<!-- <p>{{departments | json }}</p> -->
-
 <div class="department-grid">
 
-    <mat-card class="card department-card" *ngFor="let d of departments">
+
+    <mat-card class="card department-card detailed-card" *ngFor="let dept of departmentcounts"
+        [routerLink]="['/employees']" [queryParams]="{ department: dept.name }">
 
         <mat-card-content>
+            <mat-icon class="dept-icon">
+                {{ getDepartmentIcon(dept.name) }}
+            </mat-icon>
 
-            <mat-icon class="card-icon">apartment</mat-icon>
+            <h3>{{ dept.name }}</h3>
 
-            <h3>{{ d }}</h3>
+            <h1>{{ dept.count }}</h1>
+
+            <span class="view-link">
+                View {{dept.name}} Employees
+                <mat-icon>arrow_forward</mat-icon>
+            </span>
 
         </mat-card-content>
 

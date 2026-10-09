@@ -2,23 +2,27 @@
     display: grid;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 20px;
+    /* margin-top: 10px; */
     grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
 }
 
 /* Card Styling */
 
 .card {
+    margin-top: 20px;
+    padding: 0;
     max-width: 250px;
     height: 200px;
-    border-radius: 20px;
-    margin-top: 20px;
+    border-radius: 15px;
     transition: all 0.3s ease;
     cursor: pointer;
-    overflow: hidden;
+    border-top: 5px solid #4caf50;
     box-shadow:
         0 8px 25px rgba(0, 0, 0, .08);
-
+    /* box-sizing: border-box; */
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
 .card:hover {
@@ -26,14 +30,19 @@
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
 }
 
+
 /* Card Content */
 
-mat-card-content {
-    height: 100%;
+.card mat-card-content {
+    min-height: 185px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+
     align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    padding: 0;
     gap: 5px;
 }
 
@@ -42,26 +51,49 @@ mat-card-content {
 
 .card h3 {
     margin: 0;
-    font-size: 25px;
-    font-weight: 500;
+    font-size: 23px;
+    line-height: 1.2;
+    font-weight: 600;
     color: #4caf50;
 
 }
 
-.card-icon {
-    font-size: 50px;
-    width: 55px;
-    height: 55px;
-    color: gray;
+.card h1 {
+    margin: 2px 0;
 
+    font-size: 34px;
+    line-height: 1.1;
+
+    font-weight: 700;
+
+    color: #4caf50;
 }
 
-/* Department Card */
 
-.department-card {
-    width: 300px;
-    padding: 15px;
-    border-radius: 15px;
-    transition: .3s;
-    border-top: 5px solid #4caf50;
+.card .dept-icon {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: cadetblue;
+}
+
+.card .view-link {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 2px;
+
+    margin-top: 5px;
+
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+
+    color: #3f51b5;
+
+    white-space: nowrap;
 }

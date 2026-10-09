@@ -3,9 +3,12 @@ import { Employeeservice } from '../services/employeeservice';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { RouterLink, Router } from '@angular/router';
+import { Departmentservice } from '../services/departmentservice';
+
 @Component({
   selector: 'app-departments',
-  imports: [MatCardModule, MatIconModule, CommonModule],
+  imports: [MatCardModule, MatIconModule, CommonModule, RouterLink],
   templateUrl: './departments.html',
   styleUrl: './departments.css',
 })
@@ -13,7 +16,7 @@ export class Departments {
 
   departments: string[] = [];
 
-  constructor(private empservice: Employeeservice, private cdr: ChangeDetectorRef) {
+  constructor(private deptserv: Departmentservice, private empservice: Employeeservice, private cdr: ChangeDetectorRef) {
 
   }
 
@@ -42,6 +45,12 @@ export class Departments {
 
       });
 
+
+  }
+
+
+  getDepartmentIcon(dept: string) {
+    return this.deptserv.getDepartmenticon(dept);
 
   }
 }
