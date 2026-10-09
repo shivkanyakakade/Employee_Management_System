@@ -72,7 +72,7 @@ export class EmployeeForm implements OnInit {
       this.employeeForm.get('password')?.clearValidators();
       this.employeeForm.get('password')?.updateValueAndValidity();
 
-      this.employeeservice.getEmployeeById(id).subscribe(employee => {
+      this.employeeservice.getEmployeeById({id}).subscribe(employee => {
 
         this.selectedEmployeeId = employee._id;
         this.employeeForm.patchValue({
