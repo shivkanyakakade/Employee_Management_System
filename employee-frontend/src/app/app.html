@@ -75,28 +75,16 @@
   </div>
 
 
-
-
-  <!-- <div class="user-badge">
-      <mat-icon>account_circle</mat-icon>
-      {{ getUsername() }}
-    </div>
-
-    <button mat-button routerLink="/reset-password" class="reset-btn">
-      <mat-icon>lock_reset</mat-icon>
-      Reset Password
-    </button>
-
-    <button mat-raised-button color="warn" (click)="logout()">
-      <mat-icon>logout</mat-icon>
-      Logout
-    </button> -->
-
 </mat-toolbar>
 
 
 
 <div class="container">
+
+  <button *ngIf="showBackButton" mat-stroked-button class="back-button" type="button" (click)="goBack()">
+    <mat-icon>arrow_back</mat-icon>
+    Back
+  </button>
 
   <!-- <app-loading-spinner></app-loading-spinner> -->
   <router-outlet></router-outlet>

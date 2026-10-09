@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet, RouterLink, Router } from '@angular/router';
+import { RouterOutlet, RouterLink, Router, NavigationEnd } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,10 +8,11 @@ import { LoadingSpinner } from './shared/loading-spinner/loading-spinner';
 import { Auth } from './services/auth';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { CommonModule } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { SessionService } from './services/sessionservice';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -23,13 +24,22 @@ import { SessionService } from './services/sessionservice';
 export class App {
 
   protected readonly title = signal('employee-management');
-
+  showBackButton = false;
   username: any = '';
 
-  constructor(private sessionservice: SessionService, public authservice: Auth, private router: Router, private snackbar: MatSnackBar) {
+  constructor(private location: Location, private sessionservice: SessionService, public authservice: Auth, private router: Router, private snackbar: MatSnackBar) {
 
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
+      this.showBackButton =
+        event.urlAfterRedirects !== '/dashboard' &&
+        event.urlAfterRedirects !== '/login' &&
+        event.urlAfterRedirects !== '/';
+    });
   }
 
+  goBack(): void {
+    this.location.back();
+  }
 
   ngOnInit() {
 
