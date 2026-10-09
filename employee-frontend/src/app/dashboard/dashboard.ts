@@ -5,11 +5,7 @@ import { ChangeDetectorRef } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-
-import { MatToolbarModule } from '@angular/material/toolbar';
-// import { Auth } from '../services/auth';
-// import { Router } from '@angular/router';
-// import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { Departmentservice } from '../services/departmentservice';
 
 @Component({
   selector: 'app-dashboard',
@@ -31,7 +27,7 @@ export class Dashboard implements OnInit {
 
   employess: any[] = [];
 
-  constructor(private empserv: Employeeservice, private cd: ChangeDetectorRef) { }
+  constructor(private deptserv: Departmentservice, private empserv: Employeeservice, private cd: ChangeDetectorRef) { }
 
   ngOnInit(): void {
 
@@ -92,35 +88,8 @@ export class Dashboard implements OnInit {
 
   //For Icons...
   getDepartmentIcon(dept: string) {
-
-    switch (dept.toLowerCase()) {
-
-      case 'frontend':
-        return 'web';
-
-      case 'backend':
-        return 'dns';
-
-      case 'java':
-        return 'coffee';
-
-      case 'ui':
-        return 'palette';
-
-      case 'angular':
-        return 'code';
-
-      case 'developer':
-        return 'developer_mode';
-
-      case 'support':
-        return 'support_agent';
-
-      default:
-        return 'business';
-    }
+    return this.deptserv.getDepartmenticon(dept);
   }
-
 
 
 }
