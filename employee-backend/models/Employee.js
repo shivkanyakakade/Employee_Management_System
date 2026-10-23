@@ -2,11 +2,13 @@ const mongoose = require('mongoose');
 
 const employeeschema = new mongoose.Schema({
 
-    // userId: {
-    //     type: mongoose.Schema.Types.ObjectId(),
-    //     ref: 'User',
-    //     required: true
-    // },
+    employeeId: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true,
+        immutable: true
+    },
 
     name: {
         type: String,
@@ -31,7 +33,8 @@ const employeeschema = new mongoose.Schema({
 
     {
         timestamps: true
-    });
+    }
+);
 
 
 

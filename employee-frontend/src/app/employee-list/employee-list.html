@@ -23,7 +23,7 @@
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
                 <td mat-cell *matCellDef="let emp">
-                    {{ emp._id }}
+                    {{ emp.employeeId }}
                 </td>
             </ng-container>
 
@@ -71,13 +71,13 @@
                     <!-- Admin -->
                     <div class="action-buttons" *ngIf="isAdmin">
 
-                        <button mat-stroked-button class="view-link"  (click)="viewEmployee(emp._id)">
+                        <button mat-stroked-button class="view-link" (click)="viewEmployee(emp._id)">
                             View
                         </button>
 
                         <button mat-stroked-button color="primary" (click)="editEmployee(emp)">
                             Edit
-                        </button> 
+                        </button>
 
                         <button mat-stroked-button color="warn" (click)="deleteEmployee(emp._id)">
                             Delete
@@ -87,11 +87,12 @@
                     <!-- Employee -->
                     <div class="action-buttons" *ngIf="!isAdmin">
 
-                        <button mat-stroked-button class="view-link"  (click)="viewEmployee(emp._id)">
+                        <button mat-stroked-button class="view-link" (click)="viewEmployee(emp._id)">
                             View
                         </button>
 
-                        <button *ngIf="emp.email === getEmail" mat-stroked-button color="primary" (click)="editEmployee(emp)">
+                        <button *ngIf="emp.email === getEmail" mat-stroked-button color="primary"
+                            (click)="editEmployee(emp)">
                             Edit
                         </button>
 
@@ -113,4 +114,3 @@
     </div>
 
 </mat-card>
-

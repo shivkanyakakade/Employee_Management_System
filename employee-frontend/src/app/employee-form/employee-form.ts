@@ -38,13 +38,7 @@ export class EmployeeForm implements OnInit {
       password: ['', Validators.required],
       role: ['employee', Validators.required]
 
-      // name: ['', Validators.required],
-      // email: ['', [Validators.required, Validators.email]],
-      // mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-      // department: ['', [Validators.required]],
-      // password: ['', Validators.required]
     });
-
 
     // if (this.editMode) {
     //   console.log("Password Feild Removing....");
@@ -72,7 +66,7 @@ export class EmployeeForm implements OnInit {
       this.employeeForm.get('password')?.clearValidators();
       this.employeeForm.get('password')?.updateValueAndValidity();
 
-      this.employeeservice.getEmployeeById({id}).subscribe(employee => {
+      this.employeeservice.getEmployeeById({ id }).subscribe(employee => {
 
         this.selectedEmployeeId = employee._id;
         this.employeeForm.patchValue({
@@ -147,13 +141,17 @@ export class EmployeeForm implements OnInit {
 
     console.log("Emloyee Form : ", this.employeeForm.value);
 
-    const newEmployee = {
-      //no need to add id in json , it will create automatically
+    interface EmployeePayload {
+      _id?: string;
+      name: string;
+      email: string;
+      mobile: string;
+      department: string;
+      password: string;
+      role: string;
+    }
 
-      _id: this.editMode
-        ? this.selectedEmployeeId
-        : undefined,
-      // : Date.now(),
+    const newEmployee: EmployeePayload = {
 
       name: this.employeeForm.value.name || '',
       email: this.employeeForm.value.email || '',
@@ -165,6 +163,11 @@ export class EmployeeForm implements OnInit {
       password: this.employeeForm.value.password || '',
       role: this.employeeForm.value.role
     };
+
+    // Include MongoDB _id only when editing
+    if (this.editMode && this.selectedEmployeeId) {
+      newEmployee._id = this.selectedEmployeeId;
+    }
 
     console.log("New EMP: ", newEmployee);
 
